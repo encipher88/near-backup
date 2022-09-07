@@ -1,3 +1,4 @@
+```
 sudo apt install moreutils zip
 cd scripts
 sudo tee /home/encipher/scripts/backup.sh > /dev/null <<EOF
@@ -45,3 +46,4 @@ fi
 EOF
 chmod +x backup.sh
 sudo ./scripts/backup.sh
+```
