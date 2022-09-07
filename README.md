@@ -1,6 +1,6 @@
 # near-backup
 ```
-cd .near
+cd
 git clone https://github.com/encipher88/near-backup.git
 sudo nano /etc/crontab
 ```
