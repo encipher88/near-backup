@@ -14,14 +14,12 @@ echo "NEAR node was stopped" | ts
 
 if [ -d "$BACKUPDIR" ]; then
     echo "Backup started" | ts
-
-    cp -rf $DATADIR/mainnet/data/ ${BACKUPDIR}/
-
-    # Submit backup completion status, you can use healthchecks.io, betteruptime.com or other services
-    # Example
-    # curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/xXXXxXXx-XxXx-XXXX-XXXx-...
-
+    tar -czf root/backups/mydata-${DATE}.tgz $DATADIR
     echo "Backup completed" | ts
+    find root/backups/mydata-* -mtime +3 -exec rm {} \;
+    echo "export DATENEW=$DATE" >> $HOME/.bash_profile
+    source $HOME/.bash_profile
+    
 else
     echo $BACKUPDIR is not created. Check your permissions.
     exit 0
@@ -30,3 +28,4 @@ fi
 sudo systemctl start neard
 
 echo "NEAR node was started" | ts
+
